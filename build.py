@@ -80,6 +80,7 @@ def json_script(value):
 def render(locale):
     l = LABELS[locale]
     stylesheet_version = hashlib.sha256((DIST / 'styles.css').read_bytes()).hexdigest()[:12]
+    examples_version = hashlib.sha256((DIST / 'examples.js').read_bytes()).hexdigest()[:12]
     data = json.loads((DIST / ('content.zh.json' if locale == 'zh' else 'content.json')).read_text())
     nav = '\n'.join(f'<a href="#{s["id"]}" data-chapter="{s["id"]}"><span class="chapter-number">{s["number"]:02}</span>{e(s["navTitle"])}</a>' for s in data['sections'])
     sections = []
@@ -141,7 +142,7 @@ def render(locale):
   <script>try{{const t=localStorage.getItem('assistant-guide-theme')||'auto';document.documentElement.dataset.theme=t==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):t;}}catch{{}}</script>
   <script type="application/json" id="guide-labels">{json_script(l)}</script>
   <script type="application/json" id="device-data">{json_script({s['id']:s['devices'] for s in data['sections']})}</script>
-  <script src="examples.js" defer></script><script src="devices.js" defer></script><script src="app.js" defer></script>
+  <script src="examples.js?v={examples_version}" defer></script><script src="devices.js" defer></script><script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">{l['skip']}</a>
