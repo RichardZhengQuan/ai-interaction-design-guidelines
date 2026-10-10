@@ -83,44 +83,49 @@
         {
           "id": "watch",
           "name": "Smartwatch",
-          "method": "Brief voice · tap to confirm",
-          "guidance": "Start with a short spoken request when the person wants it and the environment allows it. Show one time and one confirmation that needs only a tap. Make cancellation easy, without a list to browse or a form to fill in.",
-          "note": "When speaking is inconvenient, offer a simple tappable choice. If text is needed, continue on a watch that supports input or on the phone.",
+          "method": "Brief voice · one tap",
+          "guidance": "When the person prefers speaking and the context fits, make a short spoken request, then glance at the time and tap to confirm. Keep the watch face to the task label, time, and simple confirm or cancel controls.",
+          "note": "Keep the spoken request and explanation off the watch face. When speaking is inconvenient, use a simple tap; continue on the phone if more input is needed.",
           "example": {
-            "title": "Dinner reminder",
-            "body": "Tomorrow at 7:00 PM — remind you about dinner?",
+            "title": "Dinner",
+            "body": "Tomorrow · 7:00 PM",
             "primary": "Confirm",
             "secondary": "Cancel",
             "status": "Preview · awaiting confirmation",
-            "voicePrompt": "Remind me about dinner tomorrow evening."
+            "voicePrompt": "Remind me about dinner tomorrow evening.",
+            "day": "Tomorrow",
+            "time": "7:00 PM"
           }
         },
         {
           "id": "glasses",
           "name": "Smart glasses",
-          "method": "Brief voice · simple confirmation",
-          "guidance": "When the person prefers speaking and the context fits, use one spoken request and a short spoken confirmation. Glasses with a display can add a glanceable time and simple tap action; audio-only glasses can use a brief spoken response.",
-          "note": "Avoid precise pointing or complex gestures. Support text on a paired phone when speaking is inconvenient, and do not assume every pair has a display.",
+          "method": "Brief voice · spoken confirmation",
+          "guidance": "When the person prefers speaking and the context fits, use a short spoken request and confirmation. On glasses with a display, show only a small glance at the time near the edge of view. Audio-only glasses need no visual interface.",
+          "note": "Keep the real world visible. Avoid a large floating card, dense text, or precise gestures. Use a paired phone for text input when speaking is inconvenient.",
           "example": {
-            "title": "Dinner reminder",
-            "body": "Tomorrow at 7:00 PM — remind you about dinner?",
+            "title": "Dinner",
+            "body": "Tomorrow at 7:00 PM for dinner?",
             "primary": "Confirm",
             "secondary": "Cancel",
             "status": "Preview · awaiting confirmation",
-            "voicePrompt": "Remind me about dinner tomorrow evening."
+            "voicePrompt": "Remind me about dinner tomorrow evening.",
+            "day": "Tomorrow",
+            "time": "7:00 PM",
+            "hint": "Say confirm or cancel"
           }
         },
         {
           "id": "screenless",
           "name": "Screenless devices",
-          "method": "Spoken confirmation · physical stop or mute",
-          "guidance": "After the person starts a voice interaction, speak one brief confirmation at a time and state that they can say “Confirm” or “Cancel.” Use short audible state cues and keep a physical stop or mute control easy to find.",
-          "note": "Offer repetition if the response is hard to hear. When the person prefers not to speak or needs quiet, continue through text on a paired device.",
+          "method": "Spoken reply · sound cue · physical mute or stop",
+          "guidance": "After a spoken request, reply with one short question: “Tomorrow at 7:00 PM for dinner?” The person can say “Confirm” or “Cancel.” Indicate state through a short sound or light, with a physical mute or stop control.",
+          "note": "The device has no on-screen card or buttons. Any dialogue shown in this guide is explanatory text for the reader. Offer repetition, or continue through text on a paired device when quiet is needed.",
           "example": {
             "title": "Dinner reminder",
-            "body": "Tomorrow at 7:00 PM — remind you about dinner?",
-            "primary": "“Confirm”",
-            "secondary": "“Cancel”",
+            "body": "Tomorrow at 7:00 PM for dinner?",
+            "primary": "Confirm",
+            "secondary": "Cancel",
             "status": "Preview · awaiting confirmation",
             "voicePrompt": "Remind me about dinner tomorrow evening."
           }

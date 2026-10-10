@@ -80,6 +80,9 @@ def json_script(value):
 def render(locale):
     l = LABELS[locale]
     stylesheet_version = hashlib.sha256((DIST / 'styles.css').read_bytes()).hexdigest()[:12]
+    examples_version = hashlib.sha256((DIST / 'examples.js').read_bytes()).hexdigest()[:12]
+    device_styles_version = hashlib.sha256((DIST / 'devices.css').read_bytes()).hexdigest()[:12]
+    devices_version = hashlib.sha256((DIST / 'devices.js').read_bytes()).hexdigest()[:12]
     data = json.loads((DIST / ('content.zh.json' if locale == 'zh' else 'content.json')).read_text())
     nav = '\n'.join(f'<a href="#{s["id"]}" data-chapter="{s["id"]}"><span class="chapter-number">{s["number"]:02}</span>{e(s["navTitle"])}</a>' for s in data['sections'])
     sections = []
@@ -137,16 +140,16 @@ def render(locale):
   <meta name="theme-color" content="#ffffff">
   <link rel="alternate" hreflang="en" href="index.html"><link rel="alternate" hreflang="zh-CN" href="zh.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v={stylesheet_version}"><link rel="stylesheet" href="demos.css"><link rel="stylesheet" href="devices.css">
+  <link rel="stylesheet" href="styles.css?v={stylesheet_version}"><link rel="stylesheet" href="demos.css"><link rel="stylesheet" href="devices.css?v={device_styles_version}">
   <script>try{{const t=localStorage.getItem('assistant-guide-theme')||'auto';document.documentElement.dataset.theme=t==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):t;}}catch{{}}</script>
   <script type="application/json" id="guide-labels">{json_script(l)}</script>
   <script type="application/json" id="device-data">{json_script({s['id']:s['devices'] for s in data['sections']})}</script>
-  <script src="examples.js" defer></script><script src="devices.js" defer></script><script src="app.js" defer></script>
+  <script src="examples.js?v={examples_version}" defer></script><script src="devices.js?v={devices_version}" defer></script><script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">{l['skip']}</a>
   <header class="site-header">
-    <div class="global-bar"><div class="header-identity"><a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">✳</span><span class="brand-title">{l['brand']}</span></a><a class="github-star" href="{GITHUB_REPOSITORY}" target="_blank" rel="noopener noreferrer" aria-label="{e(l['githubStar'])}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17.6l-5.7 3 1.1-6.4-4.6-4.5 6.4-.9L12 3Z"/></svg><span>Star on GitHub</span></a></div><div class="header-settings"><div class="header-appearance"><div class="appearance-switch" id="appearance" role="radiogroup" aria-label="{l['appearance']}">{appearance_switch}</div></div><nav class="language-switch" aria-label="{l['language']}"><a href="index.html" lang="en" data-language-link {'aria-current="page"' if locale == 'en' else ''}>English</a><a href="zh.html" lang="zh-CN" data-language-link {'aria-current="page"' if locale == 'zh' else ''}>简体中文</a></nav></div></div>
+    <div class="global-bar"><div class="header-identity"><a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">✳</span><span class="brand-title">{l['brand']}</span></a><a class="github-star" href="{GITHUB_REPOSITORY}" target="_blank" rel="noopener noreferrer" aria-label="{e(l['githubStar'])}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17.6l-5.7 3 1.1-6.4-4.6-4.5 6.4-.9L12 3Z"/></svg><span>Star on GitHub</span></a></div><div class="header-settings"><div class="header-appearance"><div class="appearance-switch" id="appearance" role="radiogroup" aria-label="{l['appearance']}">{appearance_switch}</div></div><nav class="language-switch" aria-label="{l['language']}"><a href="index.html" lang="en" data-language-link {'aria-current="page"' if locale == 'en' else ''}>English</a><a href="zh.html" lang="zh-CN" data-language-link {'aria-current="page"' if locale == 'zh' else ''}>中文</a></nav></div></div>
     <details class="mobile-chapters"><summary>{l['browse']} <span aria-hidden="true">⌄</span></summary><nav aria-label="{l['mobileNav']}"><a href="#background" data-chapter="background">{l['background']}</a>{nav}{menu_meta}</nav></details>
   </header>
   <div class="page-layout">

@@ -26,4 +26,51 @@
 /* Context: one spoken request, one confirmation, with typing where it fits. */
 .de-context-voice{display:flex;align-items:flex-start;gap:11px;background:#edf5ff;border:1px solid #c5d9ef;border-radius:10px;padding:12px 14px;margin-bottom:17px;min-width:0;color:#165eaa}.de-context-voice>.de-icon{width:24px;height:24px;margin-top:4px}.de-context-voice>div{min-width:0}.de-context-voice-label{display:block;font-size:10px;font-weight:600;line-height:1.5}.de-context-voice p{font-size:14px;font-weight:500;line-height:1.5;margin-top:4px;overflow-wrap:anywhere}.de-context-task .de-status{margin-bottom:9px}.de-context-task .de-actions{margin-top:15px;gap:9px}.de-context-task .de-action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 13px;font-size:12px}.de-context-typing{border-top:1px solid #e0e5ec;padding-top:16px;margin-top:18px;min-width:0}.de-context-typing label{display:block;font-size:11px;font-weight:500;color:#525a64;margin-bottom:7px}.de-context-input{display:block;width:100%;min-width:0;min-height:44px;background:#fff;border:1px solid #b9c2d0;border-radius:8px;color:var(--de-ink);font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:10px 11px}.de-context-input::placeholder{color:#666d77;opacity:1}.de-context-input:focus-visible{outline-offset:2px}.de-context-component .de-laptop-screen>.de-context-task{max-width:470px;margin:auto;padding:24px 27px}.de-context-component .de-laptop-screen .de-task-title{font-size:25px}.de-context-component .de-phone-frame .de-task{min-height:0;padding:14px 16px 18px}.de-context-component .de-phone-frame .de-context-voice{gap:8px;padding:10px;margin-bottom:15px}.de-context-component .de-phone-frame .de-context-voice>.de-icon{width:18px;height:18px}.de-context-component .de-phone-frame .de-context-voice p{font-size:12px}.de-context-component .de-phone-frame .de-task-title{font-size:22px}.de-context-component .de-phone-frame .de-actions{gap:7px;margin-top:14px}.de-context-component .de-phone-frame .de-action{font-size:11px;padding:8px 11px}.de-context-component .de-phone-frame .de-context-typing{padding-top:14px;margin-top:16px}.de-context-component .de-phone-frame .de-context-input{font-size:16px}.de-context-component .de-watch-screen .de-context-voice{display:block;padding:8px 9px;margin-bottom:12px;border-radius:8px}.de-context-component .de-watch-screen .de-context-voice>.de-icon{display:none}.de-context-component .de-watch-screen .de-context-voice-label{font-size:9px}.de-context-component .de-watch-screen .de-context-voice p{font-size:11px;line-height:1.5}.de-context-component .de-watch-screen .de-actions{flex-direction:row;align-items:stretch;gap:5px}.de-context-component .de-watch-screen .de-action{flex:1;min-height:44px;font-size:10px;padding:7px 8px}.de-context-component .de-glasses-hud{width:80%;max-width:380px}.de-context-component .de-glasses-hud>.de-icon{display:none}.de-context-component .de-glasses-hud .de-task{width:100%}.de-context-component .de-glasses-hud .de-context-voice{gap:7px;padding:9px 10px;margin-bottom:12px}.de-context-component .de-glasses-hud .de-context-voice>.de-icon{width:17px;height:17px;margin-top:3px}.de-context-component .de-glasses-hud .de-context-voice-label{font-size:9px}.de-context-component .de-glasses-hud .de-context-voice p{font-size:12px}.de-context-component .de-glasses-hud .de-actions{margin-top:12px;gap:8px}.de-context-component .de-glasses-hud .de-action{min-height:36px;font-size:11px;padding:7px 10px}.de-context-component .de-transcript .de-context-voice{padding:10px 11px;margin-bottom:14px;gap:8px}.de-context-component .de-transcript .de-context-voice p{font-size:13px}.de-context-component .de-transcript .de-action{min-height:36px;font-size:11px;padding:7px 12px}
 @media(max-width:480px){.de-context-voice{gap:8px;padding:10px 11px;margin-bottom:15px}.de-context-voice>.de-icon{width:20px;height:20px}.de-context-voice p{font-size:13px}.de-context-component .de-tv-screen .de-action{font-size:11px;min-height:44px}.de-context-component .de-laptop-screen>.de-context-task{padding:20px 16px}.de-context-component .de-laptop-screen .de-task-title{font-size:23px}.de-context-input{font-size:16px}.de-context-component .de-glasses-hud{width:94%;padding:13px 10px}.de-context-component .de-glasses-hud .de-context-voice{padding:8px;gap:6px}.de-context-component .de-glasses-hud .de-context-voice p{font-size:11px}.de-context-component .de-glasses-hud .de-context-voice>.de-icon{width:15px;height:15px}.de-context-component .de-glasses-world{height:285px}.de-context-component .de-glasses-outline{margin-top:21px}}
+/* Small wearables show a glance, not the full task transcript. */
+.de-watch-glance{padding:10px 16px 17px;text-align:center}
+.de-context-component .de-watch-screen{background:#171b23;color:#f8f9fc;min-height:195px}
+.de-context-component .de-watch-time{color:#b9c1ce}
+.de-compact-title{display:block;font-size:12px;font-weight:500;line-height:1.4;color:inherit}
+.de-watch-glance .de-compact-title{color:#b9c1ce}
+.de-compact-day{display:block;font-size:12px;line-height:1.4;margin-top:8px;color:#b9c1ce}
+.de-compact-time{display:block;font-size:28px;font-weight:600;line-height:1.2;letter-spacing:-.6px;margin-top:9px;font-variant-numeric:tabular-nums}
+.de-compact-actions{display:flex;justify-content:center;gap:12px;margin-top:17px}
+.de-compact-actions>span{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:50%;background:#2c3442;color:#e1e6ee;font-size:18px;line-height:1}
+.de-compact-actions>span:first-child{background:#087aff;color:#fff}
+.de-glasses-compact{padding-top:14px}
+.de-glasses-compact .de-glasses-world{position:relative;top:auto;height:225px}
+.de-glasses-compact .de-glasses-world>span{pointer-events:none}
+.de-glasses-compact .de-glasses-glance{position:absolute;z-index:1;right:17px;top:32px;width:148px;padding:9px 11px;border-radius:7px;background:#ffffffd6;border:1px solid #ffffffb0;box-shadow:none;color:#36584b;min-width:0}
+.de-glasses-glance .de-compact-title{font-size:10px;line-height:1.35;font-weight:500}
+.de-glasses-glance .de-compact-time{font-size:15px;line-height:1.35;letter-spacing:0;margin-top:3px}
+.de-glasses-glance .de-compact-hint{display:block;font-size:9px;line-height:1.4;margin-top:5px;color:#5c7569}
+.de-glasses-compact .de-glasses-outline{width:82%;margin-top:24px}
+
+/* Sound and physical controls; the words below are editorial captions. */
+.de-screenless-audio{display:block;max-width:510px;padding-top:22px}
+.de-audio-stage{display:flex;align-items:center;justify-content:center;gap:35px;min-height:175px}
+.de-screenless-audio .de-speaker{margin:0;flex:0 0 104px;transform:none}
+.de-speaker-stop{position:absolute;z-index:3;left:calc(50% - 8px);top:5px;width:16px;height:16px;background:#d9dce3;border:1px solid #a8aeb9;border-radius:50%}
+.de-speaker-stop:after{content:"";position:absolute;width:5px;height:5px;left:4px;top:4px;background:#727986;border-radius:1px}
+.de-audio-wave{display:flex;align-items:center;justify-content:center;gap:6px;width:132px;height:70px;color:#69859c}
+.de-audio-wave i{display:block;width:3px;height:10px;border-radius:3px;background:currentColor}
+.de-audio-wave i:nth-child(2n){height:25px}
+.de-audio-wave i:nth-child(3n){height:40px}
+.de-audio-wave i:nth-child(4n){height:56px}
+.de-audio-description{margin:20px auto 0;max-width:420px;padding:0 12px;text-align:center}
+.de-spoken-line{font-size:14px;line-height:1.8;color:#435363;overflow-wrap:anywhere}
+.de-spoken-line+.de-spoken-line{margin-top:5px!important}
+.de-spoken-label{font-size:11px;color:#7a8490;margin-right:8px;font-weight:400}
+.de-audio-note{margin-top:13px!important;font-size:10px;line-height:1.6;color:#757d87}
+.de-screenless-audio>.de-formfactor-caption{padding-top:14px}
+@media(max-width:480px){
+  .de-glasses-compact .de-glasses-world{height:210px}
+  .de-glasses-compact .de-glasses-glance{right:11px;top:28px;width:148px;transform:scale(.7);transform-origin:top right}
+  .de-glasses-compact .de-glasses-outline{width:90%;margin-top:20px}
+  .de-audio-stage{gap:22px;min-height:140px}
+  .de-screenless-audio .de-speaker{flex-basis:86px}
+  .de-audio-wave{width:104px;gap:5px}
+  .de-audio-description{padding:0;margin-top:17px}
+  .de-spoken-line{font-size:12px;line-height:1.8}
+}
 @media print{.de-tabs,.de-preview,.de-disclosure{display:none!important}.de-reference{display:block}.de-reference>.de-device-list{display:grid!important}.de-panel{display:none!important}.de-device-item{break-inside:avoid}.de-reference>summary>span{display:none}}

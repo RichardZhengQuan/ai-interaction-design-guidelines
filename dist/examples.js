@@ -324,7 +324,7 @@
 
     // One local request travels across the context views. Voice uses a fixed
     // transcript; text is shown verbatim, without claiming language understanding.
-    let contextStage = 'idle';
+    let contextStage = 'pending';
     let contextKind = 'voice';
     let contextDraft = translate('Remind me to have dinner tomorrow evening.');
     let contextRequest = contextDraft;
