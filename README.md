@@ -2,13 +2,21 @@
 
 [English](README.md) · [中文](README.zh-SG.md)
 
-A bilingual guide to designing personal AI assistants around the user’s situation, with seven design principles, interactive UI examples, and applications across six device categories.
+A bilingual guide to designing personal AI assistants that say less, show more and leave people in control. Each of the seven rules comes with a Don’t/Do comparison and an interactive example, plus guidance for six kinds of device.
 
 [Read the English guide](https://personal-ai-design-guidelines.richardqz.chatgpt.site/) · [Read the Chinese guide](https://personal-ai-design-guidelines.richardqz.chatgpt.site/zh)
 
 ## The guide
 
-Choose interactions around the user’s situation, focus on the current task, and provide clear outcomes, visible control, and continuity. Examples cover TVs, interactive large screens, smartphones, smartwatches, smart glasses, and screenless devices.
+1. Answer with the smallest thing that works
+2. Let the moment choose the input
+3. Keep one task in front
+4. Recommend one, keep the rest close
+5. Show an interface, not a transcript
+6. Ask before acting, then report what really happened
+7. Carry the task, not the chat
+
+Every example follows one task, planning dinner with Alex, across phones, computers and tablets, watches, smart glasses, TVs and screenless devices.
 
 ## Run locally
 
@@ -26,7 +34,7 @@ After changing the content or page template, regenerate both pages:
 python3 build.py
 ```
 
-Content is stored in `dist/content.json` and `dist/content.zh.json`. Interactive examples are local simulations; they do not record audio, call AI services, create reminders, or send invitations.
+The principles, Don’t/Do comparisons and device guide are stored in `dist/content.json` and `dist/content.zh.json`. The interactive examples are in `dist/examples.js`, with their Chinese text in the same file, and the device previews are in `dist/devices.js`. The examples are local simulations; they do not record audio, call AI services, create reminders, or send invitations.
 
 ## Author
 
