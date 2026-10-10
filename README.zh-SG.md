@@ -1,6 +1,6 @@
 # Richard 的人工智能交互设计指南
 
-[English](README.md) · [简体中文](README.zh-CN.md)
+[English](README.md) · [中文](README.zh-SG.md)
 
 围绕用户的使用场景设计个人 AI 助手的中英文指南，包含七项设计原则、交互示例，以及六类设备的应用说明。
 
