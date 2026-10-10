@@ -2,13 +2,21 @@
 
 [English](README.md) · [中文](README.zh-SG.md)
 
-围绕用户的使用场景设计个人 AI 助手的中英文指南，包含七项设计原则、交互示例，以及六类设备的应用说明。
+一份中英文指南，帮助个人 AI 助手少说一点、多展示一点，并把控制权留给用户。七条规则各配有避免与推荐对照和交互示例，另附六类设备的应用说明。
 
 [阅读英文指南](https://personal-ai-design-guidelines.richardqz.chatgpt.site/) · [阅读中文指南](https://personal-ai-design-guidelines.richardqz.chatgpt.site/zh)
 
 ## 设计指南
 
-围绕用户的使用场景选择交互方式，聚焦当前任务，提供清晰的结果、可见的控制与连续的体验。包含电视、可交互大屏设备、智能手机、智能手表、智能眼镜和无屏设备的示例。
+1. 用最少的内容把事说清
+2. 让场景决定输入方式
+3. 一次只把一个任务放在前台
+4. 只推荐一个，其余放在手边
+5. 给出界面，而不是一段对话
+6. 行动前先确认，结束后如实汇报
+7. 延续任务，而不是延续聊天
+
+所有示例都围绕同一个任务：和 Alex 约晚饭。示例覆盖手机、电脑与平板、手表、智能眼镜、电视和无屏设备。
 
 ## 本地预览
 
@@ -26,7 +34,7 @@ python3 -m http.server 8000 --directory dist
 python3 build.py
 ```
 
-内容保存在 `dist/content.json` 和 `dist/content.zh.json` 中。交互示例为本地模拟，不会录制音频、调用 AI 服务、创建提醒或发送邀请。
+设计原则、避免与推荐对照和设备说明保存在 `dist/content.json` 和 `dist/content.zh.json` 中。交互示例位于 `dist/examples.js`（中文文案也在同一文件中），设备预览位于 `dist/devices.js`。示例均为本地模拟，不会录制音频、调用 AI 服务、创建提醒或发送邀请。
 
 ## 作者
 

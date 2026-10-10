@@ -1,848 +1,375 @@
 {
   "title": "Designing for Personal AI Assistants",
-  "intro": [
-    "Design personal AI assistants around the user’s situation: capture a reminder by voice while walking, type in a quiet setting, and tap once to confirm a choice. Adapt the interface to the situation and device so the current task takes simple actions.",
-    "These guidelines start from six ideas: choose the right interaction method; give one task one interface; use background voice when appropriate; present fewer results at once; generate interfaces around tasks; and provide visible control and continuity."
-  ],
+  "dek": "Seven rules for AI assistants that say less, show more and leave people in control.",
+  "readingNote": "Every example follows one task: planning dinner with Alex on Thursday at 6:30, at a restaurant called Juniper. The examples are simulations; nothing is recorded, sent or booked.",
+  "background": {
+    "title": "Why this guide exists",
+    "lead": "Chatbots and chat boxes have almost ruined everything over the past few years.",
+    "paragraphs": [
+      "Reading endless chat full of filler is exhausting. Even a simple yes-or-no question gets a long explanation, unless you constrain it with a prompt. You read that right: now you get to write the essay.",
+      "As models grow more capable, I suspect this isn’t an intelligence problem. It’s a deliberate choice in how agent makers design their products and internal harnesses, and choices can be made differently.",
+      "Long conversations and visible reasoning traces may help researchers and trainers find problems. For everyday users, they are a disaster.",
+      "Interfaces should take responsibility for presenting information and enabling action, instead of asking people to keep adding prompts and finish the product’s interaction design themselves."
+    ],
+    "takeaway": "Use the interaction that fits the moment: voice, real-time voice, generated UI, a briefing. Whatever the moment, the answer should rarely be several long paragraphs.",
+    "connections": [
+      {"id": "brevity", "label": "Answer with less"},
+      {"id": "context", "label": "Fit the input to the moment"},
+      {"id": "outcome", "label": "Recommend one"},
+      {"id": "generated-ui", "label": "Show an interface"}
+    ]
+  },
   "sections": [
     {
-      "id": "context",
+      "id": "brevity",
       "number": 1,
-      "title": "Adapt to the device and situation",
-      "navTitle": "Context",
-      "lead": "When the person prefers speaking and the situation allows it, start with voice, guide one simple next action, and keep text input on devices where it fits.",
+      "navTitle": "Brevity",
+      "title": "Answer with the smallest thing that works",
+      "lead": "Match the size of the answer to the size of the question. A yes-or-no question gets a yes or no, plus the one action that follows.",
       "paragraphs": [
-        "Start with the person's current situation. When they enjoy speaking and the environment allows it, let one spoken request lead to a short response and an easy action. A dinner reminder should need one time confirmation, without a form to fill in or a new interaction to learn.",
-        "Voice can be the person's primary entry point without becoming a requirement. Keep text input visible on PCs, laptops, iPads, and phones. When speaking is inconvenient, quiet is needed, or wording must be precise, the person can type the same request directly."
+        "Padding is the most common failure of AI assistants: a friendly preamble, the question restated, a paragraph of caveats, an offer to help further. The answer ends up somewhere in the middle, and the person has to dig for it.",
+        "Start with the answer. Add only what changes the person’s decision or next step, and keep everything else a tap or a question away. Nobody should have to write a prompt just to get a shorter reply."
       ],
+      "contrast": {
+        "dont": {
+          "request": "Did the invite to Alex go out?",
+          "reply": "Great question! I’d be happy to give you an update on your invitation. As you requested earlier, I prepared an invitation for dinner with Alex at Juniper on Thursday at 6:30 PM. After you approved it, I sent the invitation to Alex’s email address. Please note that delivery times can vary between email providers, so Alex may not have seen it yet. Is there anything else I can help with, such as setting a reminder?",
+          "caption": "{count} words to say yes."
+        },
+        "do": {
+          "request": "Did the invite to Alex go out?",
+          "card": {"eyebrow": "Invite", "title": "Yes, sent at 4:12 PM.", "actions": ["View invite"]},
+          "caption": "The answer is the first line."
+        }
+      },
       "practices": [
-        {
-          "title": "Respect the person's voice preference",
-          "body": "Make voice the primary entry point when the person wants it and the context fits. Let them start and stop it, and switch easily to text."
-        },
-        {
-          "title": "Guide one simple action",
-          "body": "Present one brief response and next step, such as confirming a time or cancelling. A larger display does not require more fields, choices, or shortcuts."
-        },
-        {
-          "title": "Keep suitable text input",
-          "body": "Keep a direct text entry point on devices that support comfortable typing. When speaking is inconvenient, let the person type and review the result quietly on that device."
-        }
+        {"title": "Answer first", "body": "Put the answer, decision or result in the first line. Skip the preamble and don’t restate the question."},
+        {"title": "Budget length by context", "body": "A glance on a watch, one sentence from a speaker, a short card on a phone. Go longer only when the person asks or the task truly needs it."},
+        {"title": "Keep detail on demand", "body": "Put reasoning, sources and alternatives behind a clearly labeled control instead of inline."}
       ],
-      "exampleCaption": "The same intention can begin with voice or text on a phone or interactive large screen, then lead to one simple action.",
-      "figureAlt": "A dinner reminder started through optional voice, with visible text input on a phone and interactive large screen, followed by one simple confirmation.",
-      "figureFile": "assets/01-context.svg",
-      "devices": [
-        {
-          "id": "tv",
-          "name": "TV",
-          "method": "Push-to-talk · remote confirmation",
-          "guidance": "When the person prefers speaking and the situation allows it, use the remote's voice button to make a request. Show one confirmation that is easy to read across the room, with remote actions to confirm or cancel. In quiet settings, support the same request through a paired phone or keyboard.",
-          "note": "Show only the information needed for the current action on a shared screen. Avoid complex forms controlled with a remote.",
-          "example": {
-            "title": "Dinner reminder",
-            "body": "Tomorrow at 7:00 PM — remind you about dinner?",
-            "primary": "Confirm",
-            "secondary": "Cancel",
-            "status": "Preview · awaiting confirmation",
-            "voicePrompt": "Remind me about dinner tomorrow evening."
-          }
+      "notice": [
+        "Both views answer the same question. Compare the word counts.",
+        "The card leads with the answer and the action that follows it.",
+        "The detail is still there, one tap away rather than in the way."
+      ]
+    },
+    {
+      "id": "context",
+      "number": 2,
+      "navTitle": "Input",
+      "title": "Let the moment choose the input",
+      "lead": "Voice when hands and eyes are busy, typing when it’s quiet or the words must be exact, a tap when the decision is simple. Switching never starts the task over.",
+      "paragraphs": [
+        "No single input is right everywhere. Speaking is fastest while walking or cooking and awkward on a train. Typing is precise but slow on a watch. Confirming a time is quickest as one tap. Offer the input that suits the situation and keep the others within reach.",
+        "Voice needs visible state. When the assistant listens alongside another app, keep that app in front, show whether it is listening, working or done, and make stop a single action."
+      ],
+      "contrast": {
+        "dont": {
+          "card": {"variant": "takeover", "eyebrow": "Assistant", "title": "I’m listening…", "body": "Your draft is hidden until I finish."},
+          "caption": "Voice takes over the screen, with no visible way to stop."
         },
-        {
-          "id": "large",
-          "name": "Interactive large screens",
-          "method": "Voice · text input · click or tap to confirm",
-          "guidance": "On PCs, laptops, and iPads, prioritize voice when the person prefers it and the context fits, while keeping text input visible. Turn one request into a short confirmation that the person can click or tap to continue.",
-          "note": "Use the space to make the result clear. Do not require editing multiple fields, dragging content, or memorizing shortcuts.",
-          "example": {
-            "title": "Dinner reminder",
-            "body": "Tomorrow at 7:00 PM — remind you about dinner?",
-            "primary": "Confirm",
-            "secondary": "Cancel",
-            "status": "Preview · awaiting confirmation",
-            "voicePrompt": "Remind me about dinner tomorrow evening.",
-            "inputPlaceholder": "Type a request, such as: Remind me about dinner tomorrow evening"
-          }
-        },
-        {
-          "id": "phone",
-          "name": "Smartphone",
-          "method": "Voice · text input · tap to confirm",
-          "guidance": "When the person wants to speak and can do so comfortably, start with one spoken request and a simple tap to confirm. Keep text input easy to find. When speaking is inconvenient, let them type, with the response and confirmation visible as the keyboard opens.",
-          "note": "Switching between voice and text should not restart the task. Quiet situations can use text input and visual responses throughout.",
-          "example": {
-            "title": "Dinner reminder",
-            "body": "Tomorrow at 7:00 PM — remind you about dinner?",
-            "primary": "Confirm",
-            "secondary": "Cancel",
-            "status": "Preview · awaiting confirmation",
-            "voicePrompt": "Remind me about dinner tomorrow evening.",
-            "inputPlaceholder": "Type a short request"
-          }
-        },
-        {
-          "id": "watch",
-          "name": "Smartwatch",
-          "method": "Brief voice · one tap",
-          "guidance": "When the person prefers speaking and the context fits, make a short spoken request, then glance at the time and tap to confirm. Keep the watch face to the task label, time, and simple confirm or cancel controls.",
-          "note": "Keep the spoken request and explanation off the watch face. When speaking is inconvenient, use a simple tap; continue on the phone if more input is needed.",
-          "example": {
-            "title": "Dinner",
-            "body": "Tomorrow · 7:00 PM",
-            "primary": "Confirm",
-            "secondary": "Cancel",
-            "status": "Preview · awaiting confirmation",
-            "voicePrompt": "Remind me about dinner tomorrow evening.",
-            "day": "Tomorrow",
-            "time": "7:00 PM"
-          }
-        },
-        {
-          "id": "glasses",
-          "name": "Smart glasses",
-          "method": "Brief voice · spoken confirmation",
-          "guidance": "When the person prefers speaking and the context fits, use a short spoken request and confirmation. On glasses with a display, show only a small glance at the time near the edge of view. Audio-only glasses need no visual interface.",
-          "note": "Keep the real world visible. Avoid a large floating card, dense text, or precise gestures. Use a paired phone for text input when speaking is inconvenient.",
-          "example": {
-            "title": "Dinner",
-            "body": "Tomorrow at 7:00 PM for dinner?",
-            "primary": "Confirm",
-            "secondary": "Cancel",
-            "status": "Preview · awaiting confirmation",
-            "voicePrompt": "Remind me about dinner tomorrow evening.",
-            "day": "Tomorrow",
-            "time": "7:00 PM",
-            "hint": "Say confirm or cancel"
-          }
-        },
-        {
-          "id": "screenless",
-          "name": "Screenless devices",
-          "method": "Spoken reply · sound cue · physical mute or stop",
-          "guidance": "After a spoken request, reply with one short question: “Tomorrow at 7:00 PM for dinner?” The person can say “Confirm” or “Cancel.” Indicate state through a short sound or light, with a physical mute or stop control.",
-          "note": "The device has no on-screen card or buttons. Any dialogue shown in this guide is explanatory text for the reader. Offer repetition, or continue through text on a paired device when quiet is needed.",
-          "example": {
-            "title": "Dinner reminder",
-            "body": "Tomorrow at 7:00 PM for dinner?",
-            "primary": "Confirm",
-            "secondary": "Cancel",
-            "status": "Preview · awaiting confirmation",
-            "voicePrompt": "Remind me about dinner tomorrow evening."
-          }
+        "do": {
+          "card": {"eyebrow": "Mail · Draft to Alex", "title": "Listening", "quote": "“…and say I’ll book Juniper for 6:30.”", "actions": ["Stop", "Type instead"]},
+          "caption": "The draft stays in view. Stop and typing are one tap away."
         }
+      },
+      "practices": [
+        {"title": "Offer voice, never require it", "body": "Make voice the fast path where it helps, and keep a visible text field on devices with a keyboard."},
+        {"title": "Switch without starting over", "body": "Moving between voice, typing and tapping keeps the request and the progress."},
+        {"title": "Show the microphone state", "body": "Distinguish off, listening, working and speaking, and keep stop and mute one action away."}
+      ],
+      "notice": [
+        "The email stays in front while the assistant listens.",
+        "The control always shows its state: off, listening, working or done.",
+        "“Type instead” keeps the words heard so far."
       ]
     },
     {
       "id": "focus",
-      "number": 2,
-      "title": "Focus on one current task",
-      "navTitle": "Focus",
-      "lead": "Give the foreground task one clear interface, purpose, and next action.",
-      "paragraphs": [
-        "An assistant can continue several tasks in the background while the person works on one. Keep the current task prominent and make other work accessible through secondary status indicators.",
-        "One screen means one focused task view, rather than a fixed viewport limit. Keep the immediate decision visible where practical, while allowing scrolling and additional steps when the task requires them."
-      ],
-      "practices": [
-        {
-          "title": "Establish a clear hierarchy",
-          "body": "Arrange assistant input, task content, and the current action so their roles are easy to recognize."
-        },
-        {
-          "title": "Highlight the next step",
-          "body": "Make the action that moves the task forward prominent without competing primary buttons."
-        },
-        {
-          "title": "Keep background work accessible",
-          "body": "Use compact status indicators that let people check other tasks and return without losing progress."
-        }
-      ],
-      "exampleCaption": "One task occupies the main view; assistant input and the next action remain easy to find.",
-      "figureAlt": "An annotated task interface showing stable assistant input, task content, and a single current action.",
-      "figureFile": "assets/02-focus.png",
-      "devices": [
-        {
-          "id": "tv",
-          "name": "TV",
-          "method": "Remote D-pad · push-to-talk",
-          "guidance": "Give the active task one large panel and a clearly visible remote-focus target. Keep background tasks behind a small activity entry instead of opening competing panels.",
-          "note": "Do not let a background update move focus away from the person's current choice.",
-          "example": {
-            "title": "Choose dinner time",
-            "body": "Friday · 7:00 PM is selected",
-            "primary": "Continue",
-            "secondary": "Activity · 2 tasks",
-            "status": "Foreground task: dinner"
-          }
-        },
-        {
-          "id": "large",
-          "name": "Interactive large screens",
-          "method": "Keyboard and pointer · touch",
-          "guidance": "Keep one task as the active workspace while other tasks remain in a secondary activity area. Support clear keyboard focus on PC and laptop and direct touch selection on iPad.",
-          "note": "Additional screen space should not create several competing primary actions.",
-          "example": {
-            "title": "Plan dinner",
-            "body": "Current step: choose a time · Other tasks in Activity",
-            "primary": "Continue",
-            "secondary": "Open Activity",
-            "status": "Dinner · step 2 of 3"
-          }
-        },
-        {
-          "id": "phone",
-          "name": "Smartphone",
-          "method": "Touch · optional voice",
-          "guidance": "Keep the active task above the persistent assistant input and show one primary next action. Let a secondary activity control reveal background work without clearing the current draft.",
-          "note": "Scrolling is acceptable; a fixed one-viewport rule should not compress the task.",
-          "example": {
-            "title": "Choose a time",
-            "body": "Friday · 7:00 PM · Draft saved",
-            "primary": "Continue",
-            "secondary": "Activity · 2",
-            "status": "Dinner task in focus"
-          }
-        },
-        {
-          "id": "watch",
-          "name": "Smartwatch",
-          "method": "Tap · crown or swipe",
-          "guidance": "Show only the current small step of the active task, with one main action. Make background completion a separate notification that can wait while the current choice is made.",
-          "note": "A long list or detailed form should open on the phone rather than fill the watch.",
-          "example": {
-            "title": "Dinner time",
-            "body": "Suggested: Friday, 7:00 PM",
-            "primary": "Use this time",
-            "secondary": "Continue on phone",
-            "status": "Current step: time"
-          }
-        },
-        {
-          "id": "glasses",
-          "name": "Smart glasses",
-          "method": "Brief voice · supported gesture",
-          "guidance": "On display-capable glasses, keep one active prompt in the HUD and queue other task updates. On audio-only glasses, finish or pause the current spoken exchange before introducing another task.",
-          "note": "Do not stack several cards or overlapping spoken prompts in the user's attention.",
-          "example": {
-            "title": "Confirm dinner time",
-            "body": "Friday · 7:00 PM",
-            "primary": "Use this time",
-            "secondary": "Later",
-            "status": "One active prompt"
-          }
-        },
-        {
-          "id": "screenless",
-          "name": "Screenless devices",
-          "method": "Voice · stop or pause command",
-          "guidance": "Keep one spoken conversation thread active and ask one task-specific question per turn. Hold unrelated updates until the person answers, pauses, or asks to switch tasks.",
-          "note": "Avoid reading a queue of background task updates during an unfinished question.",
-          "example": {
-            "title": "Spoken task",
-            "body": "“For dinner, shall I use Friday at seven?”",
-            "primary": "“Use that time”",
-            "secondary": "“Pause dinner”",
-            "status": "Waiting for one answer"
-          }
-        }
-      ]
-    },
-    {
-      "id": "voice",
       "number": 3,
-      "title": "Keep background voice unobtrusive",
-      "navTitle": "Voice",
-      "lead": "Use voice when it reduces effort and lets the person continue their current activity.",
+      "navTitle": "Focus",
+      "title": "Keep one task in front",
+      "lead": "Give the current task the screen and one next action. Background work reports quietly and waits its turn.",
       "paragraphs": [
-        "Background voice can help capture an intention or handle a brief decision while another application stays in the foreground. Detailed comparisons, editing, and sensitive content may benefit from a visual view.",
-        "Make listening and speaking states explicit. People should understand when an interaction is active and be able to silence or stop it immediately."
+        "An assistant can run many tasks at once; a person attends to one. Give the task in hand the main view and a single primary action, and keep everything else in a compact activity area.",
+        "Background updates shouldn’t steal focus. A price drop or a finished task can wait for a natural pause unless the timing really matters, and nothing should move the button the person is about to press."
       ],
+      "contrast": {
+        "dont": {
+          "stack": [
+            {"title": "Dinner: pick a time", "action": "Confirm"},
+            {"title": "Price drop! Headphones $179", "action": "Buy now"},
+            {"title": "Alex replied to you", "action": "Open"}
+          ],
+          "caption": "Three primary buttons. Which one matters now?"
+        },
+        "do": {
+          "card": {"eyebrow": "Dinner with Alex", "title": "Does 6:30 work?", "body": "Juniper has a table for two.", "actions": ["Keep 6:30", "Try 7:00"], "footer": "Price watch · Target reached"},
+          "caption": "One decision in front. The price drop waits in the activity row."
+        }
+      },
       "practices": [
-        {
-          "title": "Show the current voice state",
-          "body": "Distinguish available, listening, processing, and speaking through a compact control with a readable status."
-        },
-        {
-          "title": "Keep responses brief",
-          "body": "Acknowledge the instruction and communicate the next relevant step; make longer details available visually."
-        },
-        {
-          "title": "Provide direct controls",
-          "body": "Keep start, mute, and stop controls accessible, with predictable behavior when the foreground activity changes."
-        }
+        {"title": "One primary action", "body": "Make the step that moves the task forward obvious, with no competing primary buttons."},
+        {"title": "Status, not interruption", "body": "Show background tasks as small indicators that the person can open when they choose."},
+        {"title": "Interrupt only when it can’t wait", "body": "Break in only for something that loses value if it waits, such as a table that will be released in five minutes, and say why it couldn’t wait."}
       ],
-      "exampleCaption": "A compact voice control keeps status visible while the foreground application remains usable.",
-      "figureAlt": "A foreground application with a small background voice control, listening status, and stop action.",
-      "figureFile": "assets/03-voice.png",
-      "devices": [
-        {
-          "id": "tv",
-          "name": "TV",
-          "method": "Push-to-talk remote · D-pad",
-          "guidance": "Let a remote microphone capture a short request without replacing the programme with a full chat. Show listening status and a focused stop control, then return attention to the programme.",
-          "note": "Duck or pause programme audio during capture so it does not obscure the user's speech.",
-          "example": {
-            "title": "Voice request",
-            "body": "Listening · Add a reminder for tomorrow",
-            "primary": "Stop listening",
-            "secondary": "Use remote instead",
-            "status": "Listening while programme stays visible"
-          }
-        },
-        {
-          "id": "large",
-          "name": "Interactive large screens",
-          "method": "Microphone shortcut · keyboard or touch",
-          "guidance": "Keep a compact voice status control beside the foreground application instead of opening a full assistant window. Provide a keyboard shortcut on PC and laptop and a visible touch control on iPad.",
-          "note": "Do not obscure the active document or depend on a hover-only mute button.",
-          "example": {
-            "title": "Background voice",
-            "body": "Listening · Your document remains active",
-            "primary": "Stop",
-            "secondary": "Type request",
-            "status": "Microphone active"
-          }
-        },
-        {
-          "id": "phone",
-          "name": "Smartphone",
-          "method": "Voice · touch stop",
-          "guidance": "Use a compact voice indicator while the person continues another activity on the phone. Keep the transcript brief and offer a visible stop control and a typed alternative.",
-          "note": "Give long responses a reading view; do not keep speaking over calls or media.",
-          "example": {
-            "title": "Voice capture",
-            "body": "“Remind me tomorrow at nine”",
-            "primary": "Stop",
-            "secondary": "Type instead",
-            "status": "Listening · brief transcript"
-          }
-        },
-        {
-          "id": "watch",
-          "name": "Smartwatch",
-          "method": "Brief voice · tap stop",
-          "guidance": "Use the watch to capture a short intention and acknowledge it with a brief phrase or haptic cue. Offer a large stop target and move extended dialogue to the phone.",
-          "note": "Avoid long spoken explanations during a glance interaction.",
-          "example": {
-            "title": "Reminder captured",
-            "body": "Tomorrow · 9:00 AM",
-            "primary": "Done",
-            "secondary": "Review on phone",
-            "status": "Saved · brief acknowledgement"
-          }
-        },
-        {
-          "id": "glasses",
-          "name": "Smart glasses",
-          "method": "Brief voice · supported mute gesture",
-          "guidance": "Use short audio turns without demanding a sustained glance. If a display exists, show a small listening cue; otherwise make the listening and stop states audible.",
-          "note": "Avoid continuous narration that competes with nearby conversation or important environmental sounds.",
-          "example": {
-            "title": "Background capture",
-            "body": "“Remind me at nine”",
-            "primary": "Stop listening",
-            "secondary": "Send text to phone",
-            "status": "Listening · display cue if supported"
-          }
-        },
-        {
-          "id": "screenless",
-          "name": "Screenless devices",
-          "method": "Voice · physical mute",
-          "guidance": "Provide an audible start cue, a short spoken acknowledgement, and an explicit stop response. Keep the microphone state controllable through a physical mute control, with no dependency on a screen.",
-          "note": "Background availability does not mean every response should interrupt or play at full volume.",
-          "example": {
-            "title": "Spoken acknowledgement",
-            "body": "“Reminder saved for nine. Say stop to end.”",
-            "primary": "“Stop”",
-            "secondary": "“Repeat reminder”",
-            "status": "Speaking a short confirmation"
-          }
-        }
+      "notice": [
+        "The dinner decision owns the view and has one primary button.",
+        "Simulate the price drop: it updates the activity row and leaves your focus alone.",
+        "Switch tasks with the tabs; each keeps its own state."
       ]
     },
     {
       "id": "outcome",
       "number": 4,
-      "title": "Lead with one primary result",
       "navTitle": "Outcome",
-      "lead": "Present the most useful outcome first and reveal supporting detail when it is needed.",
+      "title": "Recommend one, keep the rest close",
+      "lead": "Lead with the best answer, give the reason in a line, and keep alternatives one step away. Compare side by side only when comparing is the task.",
       "paragraphs": [
-        "For text, images, and video, an initial response should have a clear center of attention: an answer, a recommendation, or a primary artifact. Extra material should help the person evaluate or refine that outcome.",
-        "Comparison is an exception when it is the task itself. Show the options and tradeoffs needed for a decision instead of forcing a single recommendation."
+        "A long list of options hands the work back to the person. When the assistant knows the preferences, it should commit to a recommendation, explain it briefly and make the next action obvious.",
+        "Be specific about uncertainty. A wall of general caveats helps no one. One clear note about what the assistant doesn’t know, and the question that would settle it, does."
       ],
+      "contrast": {
+        "dont": {
+          "request": "Where should we have dinner on Thursday?",
+          "reply": "Here are some great options near you for Thursday evening! 1. Juniper, a modern bistro with a seasonal menu. 2. Olive Room, a lively Mediterranean spot. 3. Little Table, a casual neighborhood café. 4. Harbor Kitchen, seafood with a view. 5. Sakura House, Japanese food that’s good for groups. 6. The Corner Grill, classic comfort food. Each one has its own strengths, so it really depends on your preferences! Let me know which one you’d like.",
+          "caption": "Six options and no opinion."
+        },
+        "do": {
+          "request": "Where should we have dinner on Thursday?",
+          "card": {"eyebrow": "Best fit", "title": "Juniper", "body": "Quiet, a 12-minute walk, and a table for two at 6:30.", "note": "Not sure: whether Alex eats meat. Juniper has vegetarian dishes.", "actions": ["Book", "2 alternatives"]},
+          "caption": "One pick, one reason, one honest unknown."
+        }
+      },
       "practices": [
-        {
-          "title": "Make the outcome prominent",
-          "body": "Give the primary answer or artifact a clear position and a relevant next action."
-        },
-        {
-          "title": "Reveal detail progressively",
-          "body": "Place explanations, evidence, and alternatives behind clearly labeled controls that preserve the current view."
-        },
-        {
-          "title": "Support useful comparison",
-          "body": "When choosing between options, present a manageable set with consistent attributes and understandable differences."
-        }
+        {"title": "Commit to a recommendation", "body": "Give the best option a clear position and the action that follows from it."},
+        {"title": "Explain in one line", "body": "State the reason that matters (quiet, close, free at 6:30) and keep the evidence behind a “Why” control."},
+        {"title": "Name the unknown", "body": "Flag a specific gap next to the result instead of burying the answer in general caveats."}
       ],
-      "exampleCaption": "One recommendation leads the view, with explanations and alternatives available below.",
-      "figureAlt": "A primary dinner recommendation with a clear action and collapsed explanations and alternative options.",
-      "figureFile": "assets/04-outcome.png",
-      "devices": [
-        {
-          "id": "tv",
-          "name": "TV",
-          "method": "Remote D-pad · optional voice",
-          "guidance": "Present one readable recommendation or one primary image or video, with a clear focused action. Put more details and alternatives behind a remote-selectable entry, unless comparison is the task.",
-          "note": "Do not autoplay a sequence of generated videos while the person is deciding.",
-          "example": {
-            "title": "Dinner recommendation",
-            "body": "Harbor Kitchen · Friday · 7:00 PM",
-            "primary": "View details",
-            "secondary": "Other options",
-            "status": "One primary recommendation"
-          }
-        },
-        {
-          "id": "large",
-          "name": "Interactive large screens",
-          "method": "Keyboard and pointer · touch",
-          "guidance": "Make one answer or artifact the visual center and keep evidence or revisions in secondary controls. When comparing outputs is the task, use consistent side-by-side attributes and touch-accessible actions on iPad.",
-          "note": "Extra workspace should not become a wall of unranked text, images, or videos.",
-          "example": {
-            "title": "Recommended draft",
-            "body": "One primary draft · Explanation and variants collapsed",
-            "primary": "Use this draft",
-            "secondary": "Compare variants",
-            "status": "Primary result ready"
-          }
-        },
-        {
-          "id": "phone",
-          "name": "Smartphone",
-          "method": "Touch · optional voice",
-          "guidance": "Lead with one answer, image, or video and place its relevant next action nearby. Collapse supporting details so they can be opened without losing the result or playback position.",
-          "note": "Avoid several auto-playing previews or long duplicate captions around the same result.",
-          "example": {
-            "title": "Your video draft",
-            "body": "One preview · 24 seconds",
-            "primary": "Preview video",
-            "secondary": "Details and versions",
-            "status": "Ready · playback paused"
-          }
-        },
-        {
-          "id": "watch",
-          "name": "Smartwatch",
-          "method": "Tap · crown or swipe",
-          "guidance": "Show one short takeaway or recommendation with a single useful response. Send full text, image inspection, video playback, and meaningful comparisons to the phone.",
-          "note": "A tiny thumbnail should not be the only basis for accepting a detailed visual result.",
-          "example": {
-            "title": "Dinner suggestion",
-            "body": "Harbor Kitchen · Friday, 7:00 PM",
-            "primary": "Keep suggestion",
-            "secondary": "Details on phone",
-            "status": "Summary ready"
-          }
-        },
-        {
-          "id": "glasses",
-          "name": "Smart glasses",
-          "method": "Brief voice · supported gesture",
-          "guidance": "On display-capable glasses, show one brief result without filling the view with alternatives. On audio-only glasses, speak the main takeaway and offer to open visual content on the phone.",
-          "note": "Detailed image or video evaluation needs a surface that supports sustained inspection.",
-          "example": {
-            "title": "One recommendation",
-            "body": "Harbor Kitchen · Details available on phone",
-            "primary": "Keep suggestion",
-            "secondary": "Open details",
-            "status": "Brief result · display if available"
-          }
-        },
-        {
-          "id": "screenless",
-          "name": "Screenless devices",
-          "method": "Voice · repeat or stop command",
-          "guidance": "Speak one primary answer in a short turn and name the available follow-up choices. For images and videos, send the artifact to a named screen device rather than describing it as if the person can see it.",
-          "note": "Offer a structured comparison when requested instead of reading a long list of alternatives.",
-          "example": {
-            "title": "Spoken recommendation",
-            "body": "“I suggest Harbor Kitchen. Say details, another option, or stop.”",
-            "primary": "“Details”",
-            "secondary": "“Repeat”",
-            "status": "One spoken result"
-          }
-        }
+      "notice": [
+        "The recommendation and its action come first.",
+        "“Why” and the alternatives open in place, without leaving the result.",
+        "The one uncertainty is stated plainly, with a way to resolve it."
       ]
     },
     {
       "id": "generated-ui",
       "number": 5,
-      "title": "Generate task content within a familiar shell",
       "navTitle": "Generated UI",
-      "lead": "Use task-specific controls inside a stable interface that people can recognize and navigate.",
+      "title": "Show an interface, not a transcript",
+      "lead": "When a task has structure, such as dates, places or a draft, generate the controls for it inside a familiar frame instead of describing it in another message.",
       "paragraphs": [
-        "A task may need a calendar, map, table, or editor rather than another message. Generate the view that helps someone inspect the result and act on it within one focused task context.",
-        "Keep the surrounding navigation and assistant controls consistent. Generated content should use familiar interaction patterns and retain the person's edits as the view changes."
+        "Chat suits open questions. Once a task has a shape, prose becomes a poor interface: reading a paragraph of times to pick an evening, or asking for a rewrite to change one word. Generate a calendar, a comparison or an editor instead.",
+        "Keep the frame stable. Navigation, the task name and the assistant input stay where they were while the content changes, and whatever the person selected or typed survives when the view regenerates."
       ],
+      "contrast": {
+        "dont": {
+          "request": "When are we both free next week?",
+          "reply": "You and Alex are both free on the following evenings next week: Monday the 12th after 7:00 PM, Tuesday the 13th between 6:00 and 8:00 PM, Thursday the 15th from 6:30 PM onwards, and Friday the 16th after 8:00 PM. Wednesday the 14th doesn’t work because you have a team dinner. Which of these would you prefer? Just reply with the day and time and I’ll take care of the rest.",
+          "caption": "A calendar, typed out as prose."
+        },
+        "do": {
+          "request": "When are we both free next week?",
+          "card": {
+            "eyebrow": "Both free",
+            "title": "Thursday 15 · 6:30 PM",
+            "days": [
+              {"label": "Mon", "date": "12", "state": "free"},
+              {"label": "Tue", "date": "13", "state": "free"},
+              {"label": "Wed", "date": "14", "state": "busy"},
+              {"label": "Thu", "date": "15", "state": "selected"},
+              {"label": "Fri", "date": "16", "state": "free"}
+            ],
+            "actions": ["Use Thursday"]
+          },
+          "caption": "Pick the evening by tapping it."
+        }
+      },
       "practices": [
-        {
-          "title": "Preserve the shell",
-          "body": "Keep navigation, task identity, assistant input, and essential controls in predictable locations."
-        },
-        {
-          "title": "Choose appropriate controls",
-          "body": "Use a calendar for dates, a map for locations, and editing tools for editable content."
-        },
-        {
-          "title": "Keep state during changes",
-          "body": "Retain selections and entered values when the assistant regenerates content or changes the task view."
-        }
+        {"title": "Use the control the data calls for", "body": "A calendar for dates, a map for places, a table for comparisons, an editor for text."},
+        {"title": "Keep the frame familiar", "body": "Navigation, task identity and the assistant input stay put while the content adapts."},
+        {"title": "Never lose the person’s edits", "body": "Regenerating a view keeps selections and typed text, and flags anything that needs a second look."}
       ],
-      "exampleCaption": "Calendar, comparison, and editor views adapt the content while keeping the same surrounding controls.",
-      "figureAlt": "Three task-specific calendar, comparison, and image editor views presented inside the same stable assistant shell.",
-      "figureFile": "assets/05-generated-ui.png",
-      "devices": [
-        {
-          "id": "tv",
-          "name": "TV",
-          "method": "Remote D-pad · optional voice",
-          "guidance": "Generate a simple task panel such as a date chooser or location card inside a stable TV shell. Keep navigation and remote focus predictable as the task content changes.",
-          "note": "Dense tables, freeform editors, and private forms should continue on a personal device.",
-          "example": {
-            "title": "Choose a date",
-            "body": "Calendar task · Friday 16 selected",
-            "primary": "Use this date",
-            "secondary": "Choose location",
-            "status": "Stable navigation · calendar view"
-          }
-        },
-        {
-          "id": "large",
-          "name": "Interactive large screens",
-          "method": "Keyboard and pointer · touch or stylus",
-          "guidance": "Generate a calendar, map, table, or editor in the same task workspace with stable assistant input. Use pointer precision and shortcuts on PC and laptop, and visible touch or stylus controls on iPad.",
-          "note": "Switching task views should preserve edits, keyboard focus, and the meaning of the current selection.",
-          "example": {
-            "title": "Calendar task view",
-            "body": "Friday 16 · 7:00 PM · Selection preserved",
-            "primary": "Use selection",
-            "secondary": "Open location view",
-            "status": "Same shell · new task content"
-          }
-        },
-        {
-          "id": "phone",
-          "name": "Smartphone",
-          "method": "Touch · optional voice",
-          "guidance": "Generate one focused calendar, map, or editor view within the same assistant shell. Keep task identity and input stable, and retain selections when moving between date and location views.",
-          "note": "One task view may scroll or use subsequent steps; do not shrink every control into one viewport.",
-          "example": {
-            "title": "Choose dinner time",
-            "body": "Calendar · Friday 16 · 7:00 PM",
-            "primary": "Use this time",
-            "secondary": "Switch to map",
-            "status": "Task selection retained"
-          }
-        },
-        {
-          "id": "watch",
-          "name": "Smartwatch",
-          "method": "Tap · crown or swipe",
-          "guidance": "Generate a compact task-specific step, such as choosing a date, inside familiar watch navigation. Keep the selected value when the person opens the full calendar or editor on the phone.",
-          "note": "A generated watch view should not copy a phone-sized calendar grid or spreadsheet.",
-          "example": {
-            "title": "Calendar step",
-            "body": "Friday 16 · 7:00 PM",
-            "primary": "Use this time",
-            "secondary": "Full calendar on phone",
-            "status": "Compact task view"
-          }
-        },
-        {
-          "id": "glasses",
-          "name": "Smart glasses",
-          "method": "Brief voice · supported gesture",
-          "guidance": "On display-capable glasses, generate a short task card within stable dismiss and handoff controls. On audio-only glasses, translate the task into spoken choices and continue maps or editors on the phone.",
-          "note": "Do not assume precise gaze editing, spatial maps, or a persistent visual HUD are available.",
-          "example": {
-            "title": "Location task",
-            "body": "Harbor Kitchen · Selected for dinner",
-            "primary": "Use this location",
-            "secondary": "Open map on phone",
-            "status": "Glanceable card if display exists"
-          }
-        },
-        {
-          "id": "screenless",
-          "name": "Screenless devices",
-          "method": "Structured voice turns · physical stop",
-          "guidance": "Represent the task through structured spoken steps, with consistent repeat, back, and stop responses. Offer a phone handoff for a calendar, map, or editor that requires visual inspection.",
-          "note": "There is no visual shell or generated screen on this device; preserve the interaction pattern instead.",
-          "example": {
-            "title": "Spoken calendar step",
-            "body": "“Friday the sixteenth at seven. Use this time, go back, or stop?”",
-            "primary": "“Use this time”",
-            "secondary": "“Go back”",
-            "status": "One spoken task step"
-          }
-        }
+      "notice": [
+        "Schedule, Compare and Edit swap the working view; the frame around them doesn’t move.",
+        "Choose another day and an untouched draft updates itself.",
+        "Edit the message first, then change the day: your words are kept and flagged for review."
       ]
     },
     {
       "id": "control",
       "number": 6,
-      "title": "Make actions visible and controllable",
       "navTitle": "Control",
-      "lead": "Communicate what the assistant intends to do, what is happening, and what the person can change.",
+      "title": "Ask before acting, then report what really happened",
+      "lead": "Show exactly what will change before the assistant acts. While it runs, show real progress. When it stops, say what succeeded, what didn’t and what’s left.",
       "paragraphs": [
-        "A proposal, an action in progress, a request for input, and a completed action represent different states. Use language and controls that reflect the actual state, including failures and partial completion.",
-        "When approval is needed, show the proposed change and its scope before asking for it. Display completion only after the action succeeds."
+        "Proposed, in progress, waiting for input, done, failed and partly done are different states, and each needs its own words and controls. Never say “Done” about something that is still running or quietly failed.",
+        "Agents increasingly work for minutes, not seconds. Long work needs a visible plan, steps that tick off as they finish, a stop button that keeps working, and a short summary at the end. Not a spinner followed by a wall of text."
       ],
+      "contrast": {
+        "dont": {
+          "request": "Book dinner with Alex for Thursday.",
+          "reply": "All done! 🎉 I’ve taken care of everything for your dinner with Alex on Thursday. Enjoy your evening!",
+          "caption": "“Done”, but the restaurant hasn’t confirmed."
+        },
+        "do": {
+          "request": "Book dinner with Alex for Thursday.",
+          "card": {
+            "eyebrow": "2 of 3 done",
+            "title": "Dinner with Alex",
+            "steps": [
+              {"state": "done", "text": "Invite sent to Alex"},
+              {"state": "done", "text": "Added to your calendar"},
+              {"state": "wait", "text": "Juniper hasn’t confirmed the table yet"}
+            ],
+            "actions": ["Call Juniper"]
+          },
+          "caption": "What’s done, what isn’t, and what to do next."
+        }
+      },
       "practices": [
-        {
-          "title": "Describe the pending action",
-          "body": "Identify the affected item, intended change, and relevant details in the approval view."
-        },
-        {
-          "title": "Offer appropriate control",
-          "body": "Provide edit, stop, or approve actions where they apply, and acknowledge the effect of each choice."
-        },
-        {
-          "title": "Report the actual result",
-          "body": "Show successful changes, remaining work, or a recoverable error with a useful next step."
-        }
+        {"title": "Show the change before approval", "body": "Name who and what is affected, with the exact values, right next to the approve button."},
+        {"title": "Make long work visible", "body": "List the steps, update them as they finish, and keep stop available throughout."},
+        {"title": "Report the real result", "body": "Separate what succeeded, what failed and what still needs the person, with a next action for each."}
       ],
-      "exampleCaption": "The approval view shows a pending change and controls without implying that it is complete.",
-      "figureAlt": "A pending action displaying the proposed change and edit, stop, and approve controls.",
-      "figureFile": "assets/06-control.png",
-      "devices": [
-        {
-          "id": "tv",
-          "name": "TV",
-          "method": "Remote D-pad · phone handoff",
-          "guidance": "Show a readable pending-action summary and make stop easy to reach with the remote. Move a private or detailed approval to the phone and keep the TV status waiting until that review is complete.",
-          "note": "A shared display should not expose invite text or recipients just to obtain approval.",
-          "example": {
-            "title": "Review private invite",
-            "body": "Private invitation · Review recipient and message on your phone",
-            "primary": "Review on phone",
-            "secondary": "Stop task",
-            "status": "Waiting · Nothing sent"
-          }
-        },
-        {
-          "id": "large",
-          "name": "Interactive large screens",
-          "method": "Keyboard and pointer · touch",
-          "guidance": "Show the intended recipients, changed values, and action scope before enabling approval. Use explicit edit, stop, and approve controls with visible keyboard focus on PC and touch targets on iPad.",
-          "note": "Pressing Enter while editing a field should not accidentally approve the action.",
-          "example": {
-            "title": "Approve dinner invite",
-            "body": "To Alex · Friday, 7:00 PM · Harbor Kitchen",
-            "primary": "Approve send",
-            "secondary": "Edit details",
-            "status": "Pending approval · Nothing sent"
-          }
-        },
-        {
-          "id": "phone",
-          "name": "Smartphone",
-          "method": "Touch · optional spoken review",
-          "guidance": "Place the proposed action and its affected items in a readable review view before the approval button. Keep edit and stop accessible and change the status only when the action actually progresses.",
-          "note": "Keep approval separate from dismissing a notification or closing the review view.",
-          "example": {
-            "title": "Review invite",
-            "body": "To Alex · Friday, 7:00 PM · Harbor Kitchen",
-            "primary": "Approve send",
-            "secondary": "Edit or stop",
-            "status": "Waiting for approval"
-          }
-        },
-        {
-          "id": "watch",
-          "name": "Smartwatch",
-          "method": "Tap · crown or swipe · phone handoff",
-          "guidance": "Allow approval only when the full scope fits a short, readable review, such as adding one reminder. Send multi-person invites or detailed changes to the phone and retain a clear waiting status.",
-          "note": "Do not hide important action details behind truncation and still offer an approve button.",
-          "example": {
-            "title": "Add one reminder",
-            "body": "Tomorrow · 9:00 AM · “Call Alex”",
-            "primary": "Approve reminder",
-            "secondary": "Edit on phone",
-            "status": "Pending · Not added yet"
-          }
-        },
-        {
-          "id": "glasses",
-          "name": "Smart glasses",
-          "method": "Brief voice · supported gesture",
-          "guidance": "State a small action's full scope before asking for a distinct approval response. For complex or private changes, hand off to the phone; show a short pending cue if a display exists or speak it otherwise.",
-          "note": "A casual acknowledgement or gaze at a prompt should not count as approval.",
-          "example": {
-            "title": "Invite needs review",
-            "body": "Details and approval are on your phone",
-            "primary": "Open review",
-            "secondary": "Stop task",
-            "status": "Pending · No invite sent"
-          }
-        },
-        {
-          "id": "screenless",
-          "name": "Screenless devices",
-          "method": "Voice approval · physical stop",
-          "guidance": "Speak the action, target, and relevant values, then ask for an explicit approval phrase. Acknowledge stopping or completion audibly and offer repeat or correction before execution.",
-          "note": "Do not treat silence or a general “okay” as approval when the intended action is unclear.",
-          "example": {
-            "title": "Spoken approval",
-            "body": "“Add Call Alex for tomorrow at nine? Say approve reminder, change time, or stop.”",
-            "primary": "“Approve reminder”",
-            "secondary": "“Change time”",
-            "status": "Waiting · Reminder not added"
-          }
-        }
+      "notice": [
+        "Before you send, the card shows who, where and when, and nothing has happened yet.",
+        "After you send, each step reports its own state, and Stop works until the last one finishes.",
+        "The table stays “waiting” until Juniper confirms. Nothing claims success early."
       ]
     },
     {
       "id": "continuity",
       "number": 7,
-      "title": "Preserve continuity across interactions",
       "navTitle": "Continuity",
-      "lead": "Let people resume the same task across devices and interaction methods without rebuilding its context.",
+      "title": "Carry the task, not the chat",
+      "lead": "When someone moves from voice to screen or from phone to laptop, bring the task with them (choices, drafts and progress), not a transcript to scroll back through.",
       "paragraphs": [
-        "Carry forward the intention, selected options, unfinished input, and task progress. A switch from voice to screen or phone to desktop should leave the person at a recognizable point in the task.",
-        "Layouts can adapt to a new surface while the working state remains consistent. Make any unavailable information or synchronization delay clear."
+        "Switching devices shouldn’t mean starting over, or reading back through a conversation to find where things stand. Open the task at the same step, with the same selections and the unfinished draft exactly as it was left.",
+        "Be clear about what is kept. Show when a change is still syncing, never overwrite a newer edit with an older one, and keep private details off shared screens."
       ],
+      "contrast": {
+        "dont": {
+          "reply": "Welcome back! Here’s everything we discussed about dinner with Alex: 47 messages. Scroll up to pick up where we left off.",
+          "caption": "The task is in there somewhere."
+        },
+        "do": {
+          "card": {"eyebrow": "Continued from your phone", "title": "Dinner with Alex", "body": "Thursday 6:30 PM · Juniper", "quote": "“Hi Alex, how about dinner…”", "actions": ["Finish the draft"]},
+          "caption": "Same step, same draft."
+        }
+      },
       "practices": [
-        {
-          "title": "Preserve working state",
-          "body": "Keep selections, edits, and unfinished input available when someone leaves and returns to the task."
-        },
-        {
-          "title": "Adapt the presentation",
-          "body": "Use the destination device's space and controls while preserving the meaning of the current task."
-        },
-        {
-          "title": "Make resumption clear",
-          "body": "Show the current status and next action, and identify any update still waiting to synchronize."
-        }
+        {"title": "Resume at the same step", "body": "Restore selections, unfinished input and progress, not the conversation history."},
+        {"title": "Adapt the layout, keep the meaning", "body": "Use the new device’s space and input while the task stays recognizably the same."},
+        {"title": "Be explicit about sync and privacy", "body": "Show pending sync, protect newer edits, and keep private content on personal devices."}
       ],
-      "exampleCaption": "The phone and desktop preserve the same selection, unfinished input, and task progress.",
-      "figureAlt": "The same task on phone and desktop with matching selections, draft input, and progress state.",
-      "figureFile": "assets/07-continuity.png",
-      "devices": [
-        {
-          "id": "tv",
-          "name": "TV",
-          "method": "Remote D-pad · phone handoff",
-          "guidance": "Resume with a shared-safe task summary and the same selected time, rather than replaying the whole conversation. Continue private editing on the phone and indicate when that device has the latest draft.",
-          "note": "Do not replace a newer phone draft with an older TV selection during handoff.",
-          "example": {
-            "title": "Resume dinner task",
-            "body": "Friday · 7:00 PM retained · Draft on phone",
-            "primary": "Continue on phone",
-            "secondary": "View summary",
-            "status": "Selection synced · Draft on phone"
-          }
-        },
-        {
-          "id": "large",
-          "name": "Interactive large screens",
-          "method": "Keyboard and pointer · touch or stylus",
-          "guidance": "Open the same selected option, unfinished input, and task step when moving from phone to a large screen. Adapt the layout for pointer or touch input without resetting the working state.",
-          "note": "Show a synchronization delay before edits could overwrite a newer draft on another device.",
-          "example": {
-            "title": "Continue dinner draft",
-            "body": "Friday · 7:00 PM · Draft: “Looking forward…”",
-            "primary": "Continue editing",
-            "secondary": "Review selection",
-            "status": "Draft synced · Step 2 of 3"
-          }
-        },
-        {
-          "id": "phone",
-          "name": "Smartphone",
-          "method": "Touch · voice-to-screen handoff",
-          "guidance": "Convert a voice-started task into an editable view with the recognized choices and current progress intact. Preserve keyboard input and scroll position when the person leaves and returns.",
-          "note": "Show pending sync or uncertain transcription instead of silently changing the selected value.",
-          "example": {
-            "title": "Continue your draft",
-            "body": "Friday · 7:00 PM · “Looking forward…”",
-            "primary": "Continue editing",
-            "secondary": "Check voice input",
-            "status": "Draft retained · Step 2 of 3"
-          }
-        },
-        {
-          "id": "watch",
-          "name": "Smartwatch",
-          "method": "Tap · crown or swipe · phone handoff",
-          "guidance": "Resume the same small task step with its selected value visible. When the person opens the phone, carry the choice and any draft forward without asking for them again.",
-          "note": "The watch can summarize progress without storing or displaying every draft field.",
-          "example": {
-            "title": "Dinner task paused",
-            "body": "Friday · 7:00 PM retained",
-            "primary": "Resume on phone",
-            "secondary": "Keep paused",
-            "status": "Selection saved · Draft on phone"
-          }
-        },
-        {
-          "id": "glasses",
-          "name": "Smart glasses",
-          "method": "Brief voice · supported gesture",
-          "guidance": "Resume with a short cue naming the task and retained choice, using a display only where available. Send detailed editing to the phone with the same draft and next step.",
-          "note": "Keep an old glance prompt from implying that a task has the latest synchronized state.",
-          "example": {
-            "title": "Continue dinner plan",
-            "body": "Friday · 7:00 PM retained · Draft on phone",
-            "primary": "Resume on phone",
-            "secondary": "Hear status",
-            "status": "Choice retained · Draft handoff"
-          }
-        },
-        {
-          "id": "screenless",
-          "name": "Screenless devices",
-          "method": "Voice · resume or repeat command",
-          "guidance": "Give a short spoken recap of the retained choice and ask whether to continue the current step. On handoff, send the task and draft to the named device and confirm where the person can resume.",
-          "note": "Do not read the entire draft aloud by default, especially around other people.",
-          "example": {
-            "title": "Spoken resumption",
-            "body": "“Dinner is Friday at seven. Your draft is saved on your phone. Continue there?”",
-            "primary": "“Continue on phone”",
-            "secondary": "“Repeat status”",
-            "status": "Choice saved · Draft available"
-          }
-        }
+      "notice": [
+        "Change the time or the draft on the phone, then switch to the laptop.",
+        "The laptop opens at the same step with the same values. There’s no history to scroll.",
+        "The layout changes; the task doesn’t."
       ]
     }
   ],
-  "background": {
-    "title": "Why this guide exists",
-    "lead": "Chatbots and chat boxes have almost ruined everything over the past few years.",
-    "paragraphs": [
-      "Reading endless chat full of filler is exhausting. Even for a simple yes-or-no question, AI tends to launch into a long explanation—or you can constrain it with a prompt. You read that right: now you get to write the essay.",
-      "As models grow more capable, I increasingly suspect this is not necessarily an intelligence or comprehension problem. It may also be a deliberate choice in how agent makers design their internal harnesses.",
-      "Long conversations and reasoning traces shown in the interface may help researchers and trainers find and resolve problems. For everyday users, they are a disaster.",
-      "Interfaces should take responsibility for presenting information and enabling action, instead of asking users to keep adding prompts and finish the product’s interaction design themselves. These principles start with the current context and task: make the result visible, make the next step actionable, and provide explanations when needed."
-    ],
-    "takeaway": "Use the right interaction for the context: voice, real-time voice, generated UI, briefings… Whatever the context, the response should not always be several long paragraphs.",
-    "connections": [
+  "devices": {
+    "navTitle": "Devices",
+    "title": "Across devices",
+    "lead": "The same task on six kinds of device. Screen size is only one factor: viewing distance, input, shared or personal use and available attention all change how each rule applies.",
+    "items": [
       {
-        "id": "context",
-        "label": "Focus on the current context"
+        "id": "phone",
+        "name": "Phone",
+        "method": "Touch · voice · keyboard",
+        "context": "Personal and in hand, often on the move. Attention comes in short bursts.",
+        "rules": [
+          "A short card: the answer in one line and one button.",
+          "Voice and typing are both one tap away; the result stays visible when the keyboard opens.",
+          "The current task sits above the assistant input; background tasks fold into a compact activity row.",
+          "One recommendation with its action within thumb reach; alternatives a tap away.",
+          "Full-width calendars, maps and editors. Let them scroll rather than cramming one screen.",
+          "Review the exact change before approving. Dismissing a notification never counts as approval.",
+          "Hand off to a laptop at the same step with the same draft; voice-started tasks arrive as editable views."
+        ],
+        "example": {"status": "Waiting for your OK", "title": "Send invite to Alex?", "body": "Thursday 6:30 PM · Juniper · Table for 2", "primary": "Send invite", "secondary": "Edit"}
       },
       {
-        "id": "focus",
-        "label": "Focus attention"
+        "id": "large",
+        "name": "Computer & tablet",
+        "method": "Keyboard · pointer · touch · voice",
+        "context": "Personal and usually seated, with sustained attention and precise input.",
+        "rules": [
+          "More room is not a reason to say more. Keep the answer short and the detail collapsible.",
+          "A text field is always visible; voice gets a shortcut and a visible stop.",
+          "One active workspace. Other tasks live in a side activity panel, never in competing windows.",
+          "Use the space for evidence on demand or a real side-by-side comparison, not a longer list.",
+          "Generate richer tools, such as tables, maps and editors, inside the same assistant frame.",
+          "Show recipients and values in full before approval. Pressing Enter in a field must never approve.",
+          "Open exactly where the phone left off, and flag any edit that is still syncing."
+        ],
+        "example": {"status": "Both free", "title": "Pick an evening", "body": "Thursday 15 suits you both", "primary": "Use Thursday 15", "secondary": "Compare places", "calendar": true}
       },
       {
-        "id": "outcome",
-        "label": "Show the result"
+        "id": "watch",
+        "name": "Watch",
+        "method": "Glance · tap · short voice",
+        "context": "Personal, on the wrist, read in a two-second glance.",
+        "rules": [
+          "A few words and one tap. Anything longer goes to the phone.",
+          "Short voice in; a haptic or a single line confirms.",
+          "Only the current step. Background results arrive as separate notifications that can wait.",
+          "One takeaway. Images, video and comparisons open on the phone.",
+          "A compact step, such as picking a time. Never a phone-sized grid.",
+          "Approve on the watch only when the full scope fits on the face. Send the rest to the phone.",
+          "Show progress and the retained choice. Drafts stay on the phone."
+        ],
+        "example": {"title": "Dinner", "day": "Thu", "time": "6:30 PM", "primary": "Confirm", "secondary": "Not now"}
       },
       {
-        "id": "generated-ui",
-        "label": "Generate the task interface"
+        "id": "glasses",
+        "name": "Smart glasses",
+        "method": "Short voice · simple gesture",
+        "context": "Personal and in the field of view, while the world stays in front.",
+        "rules": [
+          "One line at the edge of view, or one spoken sentence.",
+          "Short spoken turns. Switch to the phone to type when speaking is awkward.",
+          "One prompt at a time; everything else queues.",
+          "Say or show the main takeaway. Visuals open on the phone.",
+          "Small task cards only. Maps and editors continue on the phone.",
+          "A glance or a casual “okay” is never approval. Ask for a distinct confirmation.",
+          "Resume with a short cue that names the task and the retained choice."
+        ],
+        "example": {"title": "Dinner", "day": "Thu", "time": "6:30 PM", "hint": "Say “confirm” or “not now”"}
+      },
+      {
+        "id": "tv",
+        "name": "TV",
+        "method": "Remote · push-to-talk · phone handoff",
+        "context": "Shared and across the room. Everyone on the sofa can read it.",
+        "rules": [
+          "Readable from the sofa: one headline and two actions.",
+          "Push-to-talk on the remote; type on a paired phone.",
+          "One large panel with a clear focus target. Background tasks sit behind an activity entry.",
+          "One recommendation. Don’t autoplay generated media while someone is deciding.",
+          "Simple panels like a date picker. Dense tables and forms move to a personal device.",
+          "It’s a shared screen: keep message text and recipients private, and approve on the phone.",
+          "Show a summary that’s safe to share. Private edits continue on the phone."
+        ],
+        "example": {"status": "Shared screen", "title": "Dinner with Alex", "body": "Thursday · 6:30 PM · Juniper", "primary": "Review on phone", "secondary": "Not now"}
+      },
+      {
+        "id": "screenless",
+        "name": "Screenless device",
+        "method": "Voice · sound and light cues · physical mute",
+        "context": "Shared or personal, with no screen. Everything is heard.",
+        "rules": [
+          "One sentence, then stop. Offer “more” instead of reading on.",
+          "Clear start and stop sounds, and a physical mute that always works.",
+          "One spoken thread. Unrelated updates wait for a pause.",
+          "Speak one recommendation and name the replies: “Book it, another place, or stop?”",
+          "Turn structure into short spoken steps with repeat, back and stop. Send maps and editors to a phone.",
+          "Read back the action and values, then require an explicit approval phrase. Silence is not consent.",
+          "Recap where things stand in one sentence and offer to continue on a named device."
+        ],
+        "example": {"voicePrompt": "Book dinner with Alex on Thursday.", "body": "Juniper, Thursday at 6:30, a table for two. Book it, another place, or stop?"}
       }
     ]
   }
