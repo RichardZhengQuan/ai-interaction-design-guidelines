@@ -1,6 +1,6 @@
 # Richard’s AI Interaction Design Guidelines
 
-[English](README.md) · [简体中文](README.zh-CN.md)
+[English](README.md) · [中文](README.zh-SG.md)
 
 A bilingual guide to designing personal AI assistants around the user’s situation, with seven design principles, interactive UI examples, and applications across six device categories.
 
