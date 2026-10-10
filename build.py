@@ -132,13 +132,13 @@ def render(locale):
     menu_meta = f'<div class="menu-meta"><a class="menu-top" href="#overview">{l["top"]} <span aria-hidden="true">↑</span></a><a class="author-profile" href="{PERSONAL_PAGE}" aria-label="{e(l["authorLink"])}" aria-description="{e(l["authorBio"] + " " + l["authorWork"])}"><span class="author-label">{l["author"]}</span><span class="author-name">Richard Zheng <span aria-hidden="true">↗</span></span><span class="author-bio">{l["authorBio"]}</span><span class="author-work">{l["authorWork"]}</span></a></div>'
     period = '。' if locale == 'zh' else '.'
     page = f'''<!doctype html>
-<html lang="{'zh-CN' if locale == 'zh' else 'en'}">
+<html lang="{'zh-SG' if locale == 'zh' else 'en'}">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{e(data['title'])} — {l['guide']}</title>
   <meta name="description" content="{l['description']}">
   <meta name="theme-color" content="#ffffff">
-  <link rel="alternate" hreflang="en" href="index.html"><link rel="alternate" hreflang="zh-CN" href="zh.html">
+  <link rel="alternate" hreflang="en" href="index.html"><link rel="alternate" hreflang="zh-SG" href="zh.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v={stylesheet_version}"><link rel="stylesheet" href="demos.css"><link rel="stylesheet" href="devices.css?v={device_styles_version}">
   <script>try{{const t=localStorage.getItem('assistant-guide-theme')||'auto';document.documentElement.dataset.theme=t==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):t;}}catch{{}}</script>
@@ -149,7 +149,7 @@ def render(locale):
 <body>
   <a class="skip-link" href="#main">{l['skip']}</a>
   <header class="site-header">
-    <div class="global-bar"><div class="header-identity"><a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">✳</span><span class="brand-title">{l['brand']}</span></a><a class="github-star" href="{GITHUB_REPOSITORY}" target="_blank" rel="noopener noreferrer" aria-label="{e(l['githubStar'])}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17.6l-5.7 3 1.1-6.4-4.6-4.5 6.4-.9L12 3Z"/></svg><span>Star on GitHub</span></a></div><div class="header-settings"><div class="header-appearance"><div class="appearance-switch" id="appearance" role="radiogroup" aria-label="{l['appearance']}">{appearance_switch}</div></div><nav class="language-switch" aria-label="{l['language']}"><a href="index.html" lang="en" data-language-link {'aria-current="page"' if locale == 'en' else ''}>English</a><a href="zh.html" lang="zh-CN" data-language-link {'aria-current="page"' if locale == 'zh' else ''}>中文</a></nav></div></div>
+    <div class="global-bar"><div class="header-identity"><a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">✳</span><span class="brand-title">{l['brand']}</span></a><a class="github-star" href="{GITHUB_REPOSITORY}" target="_blank" rel="noopener noreferrer" aria-label="{e(l['githubStar'])}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4L12 17.6l-5.7 3 1.1-6.4-4.6-4.5 6.4-.9L12 3Z"/></svg><span>Star on GitHub</span></a></div><div class="header-settings"><div class="header-appearance"><div class="appearance-switch" id="appearance" role="radiogroup" aria-label="{l['appearance']}">{appearance_switch}</div></div><nav class="language-switch" aria-label="{l['language']}"><a href="index.html" lang="en" data-language-link {'aria-current="page"' if locale == 'en' else ''}>English</a><a href="zh.html" lang="zh-SG" data-language-link {'aria-current="page"' if locale == 'zh' else ''}>中文</a></nav></div></div>
     <details class="mobile-chapters"><summary>{l['browse']} <span aria-hidden="true">⌄</span></summary><nav aria-label="{l['mobileNav']}"><a href="#background" data-chapter="background">{l['background']}</a>{nav}{menu_meta}</nav></details>
   </header>
   <div class="page-layout">
