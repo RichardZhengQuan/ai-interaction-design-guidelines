@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
+<title id="title">Dinner reminder</title><desc id="desc">Use voice by choice. Guide one simple action. Keep text available where it fits.</desc>
+<rect width="1440" height="860" fill="#f5f5f7"/>
+<g font-family="-apple-system, BlinkMacSystemFont, Arial, 'PingFang SC', sans-serif" fill="#1d1d1f">
+<g fill="#6e6e73" font-size="19" font-weight="600" text-anchor="middle"><text x="225" y="66">SMARTPHONE</text><text x="715" y="66">INTERACTIVE LARGE SCREEN</text><text x="1200" y="66">AUDIO</text></g>
+<rect x="75" y="104" width="300" height="616" rx="40" fill="white" stroke="#929298" stroke-width="3"/>
+<rect x="181" y="119" width="88" height="8" rx="4"/>
+<text x="100" y="153" font-size="15" font-weight="600">9:41</text>
+<text x="101" y="197" font-size="25" font-weight="650">Dinner reminder</text>
+<text x="101" y="229" font-size="16" fill="#6e6e73">Voice when you want it</text>
+<rect x="100" y="254" width="250" height="62" rx="16" fill="#eaf3ff"/>
+<g stroke="#007aff" stroke-width="4" stroke-linecap="round"><path d="M120 277v17m8-24v31m8-19v10m8-20v30"/></g>
+<text x="165" y="292" font-size="20" fill="#0066cc" font-weight="600">Choose voice</text>
+<text x="103" y="350" font-size="18">“Remind me to have dinner</text><text x="103" y="378" font-size="18">tomorrow evening.”</text>
+<rect x="100" y="409" width="250" height="153" rx="17" fill="#f5f5f7"/>
+<text x="117" y="439" font-size="20" font-weight="600">Tomorrow · 7:00 PM</text><text x="117" y="471" font-size="18" fill="#6e6e73">Remind you then?</text>
+<rect x="117" y="492" width="216" height="49" rx="12" fill="#007aff"/><text x="225" y="523" font-size="21" fill="white" font-weight="600" text-anchor="middle">Confirm</text>
+<text x="101" y="598" font-size="17" fill="#6e6e73">Or type your request</text><rect x="100" y="616" width="250" height="54" rx="14" fill="white" stroke="#c7c7cc"/><text x="115" y="650" font-size="16" fill="#6e6e73">Type a short request…</text>
+<rect x="181" y="693" width="88" height="5" rx="2.5"/>
+<rect x="426" y="180" width="570" height="446" rx="19" fill="white" stroke="#a4a4aa" stroke-width="2"/>
+<g><circle cx="449" cy="204" r="6" fill="#ff6058"/><circle cx="470" cy="204" r="6" fill="#ffbd2e"/><circle cx="491" cy="204" r="6" fill="#28c840"/></g>
+<path d="M426 227h570" stroke="#d6d6dc"/><text x="455" y="268" font-size="26" font-weight="650">Dinner reminder</text>
+<rect x="455" y="287" width="512" height="63" rx="15" fill="#eaf3ff"/><g stroke="#007aff" stroke-width="4" stroke-linecap="round"><path d="M478 308v19m8-25v30m8-19v10m8-21v32"/></g><text x="521" y="325" font-size="20" fill="#0066cc" font-weight="600">Choose voice</text><text x="727" y="325" font-size="16" fill="#6e6e73">Voice when you want it</text>
+<text x="455" y="385" font-size="19">“Remind me to have dinner tomorrow evening.”</text>
+<rect x="455" y="408" width="512" height="101" rx="15" fill="#f5f5f7"/><text x="473" y="444" font-size="22" font-weight="600">Tomorrow · 7:00 PM</text><text x="473" y="478" font-size="19" fill="#6e6e73">Remind you then?</text>
+<rect x="820" y="434" width="128" height="50" rx="12" fill="#007aff"/><text x="884" y="466" font-size="21" fill="white" font-weight="600" text-anchor="middle">Confirm</text>
+<text x="455" y="542" font-size="17" fill="#6e6e73">Or type your request</text><rect x="455" y="558" width="512" height="45" rx="12" fill="white" stroke="#c7c7cc"/><text x="471" y="587" font-size="17" fill="#6e6e73">Type a short request…</text>
+<path d="M422 648h578l-29 14H451Z" fill="#d6d6dc"/><text x="711" y="699" font-size="20" text-anchor="middle" fill="#6e6e73">One simple action</text>
+<rect x="1060" y="272" width="280" height="278" rx="28" fill="white" stroke="#d6d6dc"/>
+<g stroke="#007aff" stroke-width="5" stroke-linecap="round"><path d="M1129 323v20m17-34v49m17-25v19m17-48v64m17-36v17m17-25v45m17-28v13m17-31v49"/></g>
+<text x="1200" y="414" font-size="21" font-weight="650" text-anchor="middle">“Tomorrow at 7 PM?”</text><text x="1200" y="457" font-size="25" fill="#0066cc" font-weight="650" text-anchor="middle">“Yes.”</text><text x="1200" y="513" font-size="16" fill="#6e6e73" text-anchor="middle">A brief spoken confirmation</text>
+<path d="M76 765h1264" stroke="#d6d6dc"/>
+<g font-size="21" fill="#6e6e73" text-anchor="middle"><text x="244" y="806">Use voice by choice.</text><text x="710" y="806">Guide one simple action.</text><text x="1173" y="806">Keep text available where it fits.</text></g>
+</g></svg>
